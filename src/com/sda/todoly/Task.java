@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 
 
-public class Task {
+public class Task implements Comparable<Task> {
 
     private String title;
     private LocalDate dueDate;
@@ -36,8 +36,7 @@ public class Task {
         this.title = title;
     }
 
-    public void setDueDate(LocalDate dueDate) {
-        this.dueDate = dueDate;
+    public void setDueDate(LocalDate dueDate) { this.dueDate = dueDate;
     }
 
     public void setProject(String project) {
@@ -59,6 +58,14 @@ public class Task {
         setDone(true);
     }
 
+    public int compareTo(Task t) {
+        return dueDate.compareTo(t.getDueDate());
+    }
 
+    @Override
+    public String toString() {
+        return  "{Title: " + title + ", Due date: " +
+                dueDate + ", Project: " + project + ", Is done: " + isDone + "}";
+    }
 
 }
