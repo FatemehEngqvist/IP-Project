@@ -1,3 +1,5 @@
+package com.sda.todoly;
+
 import java.time.LocalDate;
 
 
@@ -67,5 +69,4 @@ public class Task implements Comparable<Task> {
         return  "{Title: " + title + ", Due date: " +
                 dueDate + ", Project: " + project + ", Is done: " + isDone + "}";
     }
-
 }

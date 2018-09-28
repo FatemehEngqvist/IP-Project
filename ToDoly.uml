@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="290.50477430555554" y="0.0">com.sda.todoly.Task</node>
+    <node x="533.4839409722222" y="465.0">com.sda.todoly.TaskManager</node>
+    <node x="860.4839409722222" y="744.0">com.sda.todoly.PrintMenu</node>
+    <node x="185.49999999999994" y="531.5">com.sda.todoly.TaskReader</node>
+    <node x="0.0" y="777.0">com.sda.todoly.TaskWriter</node>
+    <node x="423.9839409722222" y="931.0">com.sda.todoly.Main</node>
+    <node x="348.9839409722222" y="744.0">com.sda.todoly.MenuOperation</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.sda.todoly.Main" target="com.sda.todoly.MenuOperation">
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="58.5" />
+    </edge>
+    <edge source="com.sda.todoly.MenuOperation" target="com.sda.todoly.Task">
+      <point x="0.0" y="-58.5" />
+      <point x="515.9839409722222" y="719.0" />
+      <point x="498.49999999999994" y="719.0" />
+      <point x="498.49999999999994" y="445.0" />
+      <point x="508.19227430555554" y="445.0" />
+      <point x="24.1875" y="202.5" />
+    </edge>
+    <edge source="com.sda.todoly.Main" target="com.sda.todoly.TaskManager">
+      <point x="40.888888888888914" y="-25.5" />
+      <point x="556.8728298611111" y="891.0" />
+      <point x="775.6666666666665" y="891.0" />
+      <point x="775.6666666666665" y="719.0" />
+      <point x="788.4839409722222" y="719.0" />
+      <point x="102.0" y="114.5" />
+    </edge>
+    <edge source="com.sda.todoly.Main" target="com.sda.todoly.PrintMenu">
+      <point x="81.77777777777783" y="-25.5" />
+      <point x="597.76171875" y="911.0" />
+      <point x="1016.9839409722222" y="911.0" />
+      <point x="0.0" y="58.5" />
+    </edge>
+    <edge source="com.sda.todoly.TaskManager" target="com.sda.todoly.Task">
+      <point x="76.5" y="-114.5" />
+      <point x="762.9839409722222" y="435.0" />
+      <point x="604.9422743055555" y="435.0" />
+      <point x="120.9375" y="202.5" />
+    </edge>
+    <edge source="com.sda.todoly.Main" target="com.sda.todoly.TaskReader">
+      <point x="-40.888888888888914" y="-25.5" />
+      <point x="475.09505208333326" y="891.0" />
+      <point x="307.94574652777777" y="891.0" />
+      <point x="307.94574652777777" y="719.0" />
+      <point x="246.49999999999994" y="719.0" />
+      <point x="-61.0" y="48.0" />
+    </edge>
+    <edge source="com.sda.todoly.Main" target="com.sda.todoly.Task">
+      <point x="61.33333333333337" y="-25.5" />
+      <point x="577.3172743055555" y="901.0" />
+      <point x="849.9839409722222" y="901.0" />
+      <point x="849.9839409722222" y="425.0" />
+      <point x="653.3172743055555" y="425.0" />
+      <point x="169.3125" y="202.5" />
+    </edge>
+    <edge source="com.sda.todoly.TaskReader" target="com.sda.todoly.Task">
+      <point x="-61.0" y="-48.0" />
+      <point x="246.49999999999994" y="445.0" />
+      <point x="363.06727430555554" y="445.0" />
+      <point x="-120.9375" y="202.5" />
+    </edge>
+    <edge source="com.sda.todoly.MenuOperation" target="com.sda.todoly.TaskManager">
+      <point x="111.33333333333337" y="-58.5" />
+      <point x="627.3172743055555" y="719.0" />
+      <point x="584.4839409722222" y="719.0" />
+      <point x="-102.0" y="114.5" />
+    </edge>
+    <edge source="com.sda.todoly.Main" target="com.sda.todoly.TaskWriter">
+      <point x="-61.33333333333326" y="-25.5" />
+      <point x="454.6506076388889" y="901.0" />
+      <point x="205.5" y="901.0" />
+      <point x="68.5" y="25.5" />
+    </edge>
+    <edge source="com.sda.todoly.TaskWriter" target="com.sda.todoly.Task">
+      <point x="0.0" y="-25.5" />
+      <point x="136.99999999999994" y="435.0" />
+      <point x="314.69227430555554" y="435.0" />
+      <point x="-169.3125" y="202.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8207008040448803" x="542.9078672374325" y="547.3441295870475" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

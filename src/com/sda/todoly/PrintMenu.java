@@ -1,30 +1,30 @@
+package com.sda.todoly;
 
+public class PrintMenu {
 
-public class View {
-
-    static void printWelcome() {
+    static void welcome(int undoneTasks, int doneTasks) {
         System.out.println(">> Welcome to ToDoly \n"
-                + ">> You have X tasks todo and Y tasks are done"); //TODO fix X and Y
+                + ">> You have " + undoneTasks  + " tasks todo and " + doneTasks + " tasks are done");
     }
 
-    static void printMainMenu() {
+    static void mainMenu() {
         System.out.println();
         System.out.println(">> Pick an option \n"
                 + ">> (1) Show Task List (by date or project) \n"
                 + ">> (2) Add New Task \n"
                 + ">> (3) Edit Task (update, mark as done, remove \n"
-                + ">> (4) Save and Quite \n"
-                + ">> ");
+                + ">> (4) Save and Quite");
+        System.out.print(">> ");
     }
 
-    static void printShowTasksMenu() {
+    static void showTasksByDateOrProjectMenu() {
         System.out.println(">> Pick an option \n"
                 + ">> (1) Show Task List by date \n"
-                + ">> (2) Show Task List by project \n"
-                + ">> ");
+                + ">> (2) Show Task List by project");
+        System.out.print(">> ");
     }
 
-    static void printEditMenu() {
+    static void editTaskMenu() {
         System.out.println(">> Pick an option \n"
                 + ">> (1) Update task \n"
                 + ">> (2) Mark as done \n"

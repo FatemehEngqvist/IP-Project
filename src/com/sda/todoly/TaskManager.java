@@ -1,3 +1,5 @@
+package com.sda.todoly;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.stream.Collectors;
@@ -13,12 +15,14 @@ import java.util.stream.Collectors;
 public class TaskManager {
 
     private ArrayList<Task> tasks;
+    private int nextTaskID;
 
     /**
      * Constructor
      */
     public TaskManager(ArrayList<Task> tasks) {
         this.tasks = tasks;
+        nextTaskID = 1;
     }
 
     /**
@@ -42,6 +46,10 @@ public class TaskManager {
      */
     ArrayList<Task> getTasks() {
         return tasks;
+    }
+
+    int getNumTasks() {
+        return tasks.size();
     }
 
     ArrayList<Task> sortByDate() {
