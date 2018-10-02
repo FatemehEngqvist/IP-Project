@@ -12,7 +12,11 @@ public class Task implements Comparable<Task> {
     private static int lastId = 0;
     private int id;
 
+<<<<<<< HEAD
     public Task(String title, LocalDate dueDate, String project, boolean isDone) {
+=======
+    public Task(int id, String title, LocalDate dueDate, String project, boolean isDone) {
+>>>>>>> 2cdd5a02fa4c801a466a407bac53b28e493d714b
         lastId ++;
         id = lastId;
         this.title = title;
@@ -22,7 +26,11 @@ public class Task implements Comparable<Task> {
     }
 
 
+<<<<<<< HEAD
     public int getId() {
+=======
+    public String getId() {
+>>>>>>> 2cdd5a02fa4c801a466a407bac53b28e493d714b
         return id;
     }
 
