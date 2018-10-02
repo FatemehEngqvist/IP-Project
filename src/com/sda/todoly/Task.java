@@ -9,14 +9,22 @@ public class Task implements Comparable<Task> {
     private LocalDate dueDate;
     private String project;
     private boolean isDone;
+    private static int lastId = 0;
+    private int id;
 
-    public Task(String title, LocalDate dueDate, String project, boolean isDone) {
+    public Task(int id, String title, LocalDate dueDate, String project, boolean isDone) {
+        lastId ++;
+        id = lastId;
         this.title = title;
         this.dueDate = dueDate;
         this.project = project;
         this.isDone = isDone;
     }
 
+
+    public String getId() {
+        return id;
+    }
 
     public String getTitle() {
         return title;
@@ -32,6 +40,10 @@ public class Task implements Comparable<Task> {
 
     public boolean isDone() {
         return isDone;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setTitle(String title) {
