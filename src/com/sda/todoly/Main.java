@@ -27,7 +27,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         // TODO - count tasks
-        welcome(0, 0);
+
+        welcome(taskManager.noOfNotDoneTasks(), taskManager.noOfDoneTasks());
 
         boolean quit = false;
         while(!quit) {
@@ -44,7 +45,7 @@ public class Main {
                 // Add new Task
                 case 2: {
                     // TODO When you choose 2 and add a new task what will happen when you choose 1? Shall the new task be shown in the list?
-                    taskManager.addTask(creatTask());
+                    creatTask(taskManager);
                     break;
                 }
 

@@ -29,6 +29,8 @@ public class PrintMenu {
                 + ">> (1) Update task \n"
                 + ">> (2) Mark as done \n"
                 + ">> (3) Remove task");
+        System.out.print(">> ");
+
     }
 
 

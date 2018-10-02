@@ -29,6 +29,11 @@ public class TaskManager {
      * This method is used to add a new task to tasks list.
      * @param task
      */
+
+    // TODO     public void addTask(String title, String status) {
+    //        tasks.add(new Tasktask);
+    //
+
     public void addTask(Task task) {
         tasks.add(task);
     }
@@ -63,6 +68,26 @@ public class TaskManager {
         return (ArrayList<Task>) tasks.stream()
                 .filter(task -> task.getProject().contains(project))
                 .collect(Collectors.toList());
+    }
+
+    public int noOfDoneTasks() {
+        int sum = 0;
+        for(Task t : tasks) {
+            if(t.isDone()) {
+                sum++;
+            }
+        }
+        return sum;
+    }
+
+    public int noOfNotDoneTasks() {
+        int sum = 0;
+        for(Task t : tasks) {
+            if(!t.isDone()) {
+                sum++;
+            }
+        }
+        return sum;
     }
 
 }

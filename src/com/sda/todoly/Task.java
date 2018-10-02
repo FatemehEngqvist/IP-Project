@@ -12,7 +12,7 @@ public class Task implements Comparable<Task> {
     private static int lastId = 0;
     private int id;
 
-    public Task(int id, String title, LocalDate dueDate, String project, boolean isDone) {
+    public Task(String title, LocalDate dueDate, String project, boolean isDone) {
         lastId ++;
         id = lastId;
         this.title = title;
@@ -22,7 +22,7 @@ public class Task implements Comparable<Task> {
     }
 
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

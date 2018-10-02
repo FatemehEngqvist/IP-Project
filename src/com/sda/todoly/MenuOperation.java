@@ -1,5 +1,6 @@
 package com.sda.todoly;
 
+import java.io.FileNotFoundException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,11 +8,16 @@ import java.util.Scanner;
 
 public class MenuOperation {
 
+    TaskManager taskManager = new TaskManager(new TaskReader().loadTasks());
+
+    public MenuOperation() throws FileNotFoundException {
+    }
+
     /**
      *
      * @return Task This returns the task object made of reading user input.
      */
-    static Task creatTask() {
+     static void creatTask(TaskManager taskManager) {
         Scanner sc = new Scanner(System.in);
         System.out.print(">> Title: ");
         String title = sc.nextLine();
@@ -32,8 +38,10 @@ public class MenuOperation {
         System.out.print(">> Project: ");
         String project = sc.nextLine();
         boolean isDone = false;
-        Task task = new Task(title, dueDate, project, isDone);
-        return task;
+
+        //Task task = new Task(title, dueDate, project, isDone); // addtask skapa inte här
+         taskManager.addTask(new Task(title, dueDate, project, isDone));
+        //return task;
     }
 
     static void displayTasks(TaskManager taskManager) {
