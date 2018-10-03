@@ -4,15 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.sda.todoly.PrintMenu.*;
 import static com.sda.todoly.MenuOperation.*;
-
 
 
 /**
  * This class is a part of "ToDoList" project.
  * This main reads user input and choose different operations based on user preference.
- *
  *
  * @author Fatemeh Engqvist
  */
@@ -25,50 +22,79 @@ public class Main {
         ArrayList<Task> tasks = taskReader.loadTasks();
         TaskManager taskManager = new TaskManager(tasks);
         Scanner sc = new Scanner(System.in);
-
-        // TODO - count tasks
-
-        welcome(taskManager.noOfNotDoneTasks(), taskManager.noOfDoneTasks());
+        displayWelcome(taskManager.noOfNotDoneTasks(), taskManager.noOfDoneTasks());
 
         boolean quit = false;
-        while(!quit) {
-            mainMenu();
+        while (!quit) {
+            displayMainMenu();
+            System.out.println("Enter your choice: ");
             int option = Integer.parseInt(sc.nextLine());
-
             switch (option) {
 
+                // Show Task List ordered by date or filtered by project based on user choice
                 case 1: {
-                    showTasksByDateOrProjectMenu();
-                    displayTasks(taskManager);
+                    displayTasksByDateOrProjectMenu();
+                    System.out.println("Enter your choice: ");
+                    int showOption = Integer.parseInt(sc.nextLine());
+                    switch (showOption) {
+                        case 1:
+                            printTasks(taskManager.sortByDate());
+                            break;
+                        case 2:
+                            System.out.println("Enter Project: ");
+                            String project = sc.nextLine();
+                            printTasks(taskManager.filterByProject(project));
+                            break;
+                        default:
+                    }
                     break;
                 }
+
                 // Add new Task
                 case 2: {
-                    // TODO When you choose 2 and add a new task what will happen when you choose 1? Shall the new task be shown in the list?
-                    creatTask(taskManager);
+                    addTaskToTaskList(taskManager);
                     break;
                 }
 
                 // Edit task
                 case 3:
-                    editTaskMenu();
-                    System.out.println(">> Choose a task number from the following list");
-                    printTasks(taskManager.sortByDate());
-                    System.out.printf(">> ");
+                    displayEditTaskMenu();
+                    System.out.println("Enter your choice: ");
+                    int editOption = Integer.parseInt(sc.nextLine());
 
-                    printTasks(editTask(tasks));
+                    switch (editOption) {
+                        case 1: // Update task
+                            printTasks(updateTask(tasks));
+                            break;
 
+
+                        // Mark as done
+                        case 2:
+                            printTasks(markAsDone(tasks));
+                            break;
+
+
+                        // Remove task
+                        case 3:
+                            printTasks(removeTask(tasks));
+                            break;
+                    }
                     break;
+
                 case 4:
                     TaskWriter taskWriter = new TaskWriter();
                     taskWriter.writeToFile(taskManager.getTasks());
                     System.out.println(">> End of operation.");
                     quit = true; //TODO save and quit
                     break;
+
+                case 0:
+
                 default:
                     System.out.println(">> Please choose an option between 1 to 4");
                     break;
-                }
+            }
+
 
         }
     }

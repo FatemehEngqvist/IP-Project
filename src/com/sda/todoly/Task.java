@@ -78,7 +78,11 @@ public class Task implements Comparable<Task> {
 
     @Override
     public String toString() {
-        return  "{Title: " + title + ", Due date: " +
-                dueDate + ", Project: " + project + ", Is done: " + isDone + "}";
+        String status = "task is Not Done";
+        if(isDone) {
+            status = "task is Done";
+        }
+        return  " Task id: " + id + "  Title: " + title + "  Due date: " +
+                dueDate + "  Project: " + project + "  Status: " + status ;
     }
 }

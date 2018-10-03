@@ -19,7 +19,7 @@ public class TaskReader {
 	public ArrayList<Task> loadTasks() throws FileNotFoundException {
 		ArrayList<Task> tasksToShow = new ArrayList<>();
 
-		File file = new File("/Users/tmp-sda-1166/Documents/IP-Project/tasks.txt");
+		File file = new File("tasks.txt");
 		FileReader fileReader = new FileReader(file);
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
 		String line;

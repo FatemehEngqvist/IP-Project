@@ -1,8 +1,11 @@
 package com.sda.todoly;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.stream.Collectors;
+import java.util.Iterator;
 
 /**
  * This class is a part of "ToDoList" project.
@@ -27,23 +30,30 @@ public class TaskManager {
 
     /**
      * This method is used to add a new task to tasks list.
-     * @param task
+     * @param
      */
-
-    // TODO     public void addTask(String title, String status) {
-    //        tasks.add(new Tasktask);
-    //
-
-    public void addTask(Task task) {
-        tasks.add(task);
+    public void addTask(String title, LocalDate dueDate, String project, boolean isDone) {
+        tasks.add(new Task(title, dueDate, project, isDone));
     }
 
     /**
      * This method is used to remove a task from tasks list.
      * @param task
      */
+
+    // TODO - check which removeTask method to hold
     public void removeTask(Task task) {
         tasks.remove(task);
+    }
+
+    public void removeTask(int id) {
+        Iterator<Task> it = tasks.iterator();
+        while(it.hasNext()) {
+            Task task = it.next();
+            if(task.getId() == id) {
+                tasks.remove(task);
+            }
+        }
     }
 
     /**
@@ -67,6 +77,7 @@ public class TaskManager {
     ArrayList<Task> filterByProject(String project) {
         return (ArrayList<Task>) tasks.stream()
                 .filter(task -> task.getProject().contains(project))
+                .sorted(Comparator.comparing(Task::getDueDate))
                 .collect(Collectors.toList());
     }
 
@@ -89,5 +100,7 @@ public class TaskManager {
         }
         return sum;
     }
+
+
 
 }
