@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static com.sda.todolist.MenuOperation.*;
+
 
 /**
  * This class is a part of "ToDoList" project.
@@ -12,7 +14,6 @@ import java.util.Scanner;
  * @author Fatemeh Engqvist
  */
 public class Main {
-    static MenuOperation p = new MenuOperation();
 
     public static void main(String[] args) throws IOException {
 
@@ -22,100 +23,96 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
 
-        p.displayWelcome(taskManager.noOfNotDoneTasks(), taskManager.noOfDoneTasks());
+        displayWelcome(taskManager.noOfNotDoneTasks(), taskManager.noOfDoneTasks());
 
         boolean quit = false;
         while (!quit) {
-            p.displayMainMenu();
-            String inputString = sc.nextLine();
-            if (p.isInt(inputString)) {
-                int input = Integer.parseInt(inputString);
-                switch (input) {
+            int input = getOption(sc, "Show Task List (by date or project)", "Add New Task", "Edit Task (update, mark as done, remove", "Save and Quit");
+            switch (input) {
 
-                    // Show Task List ordered by date or filtered by project
-                    case 1: {
+                // Show Task List ordered by date or filtered by project
+                case 1: {
 
-                        //displayTaskMenu();
-                        int showOption = p.getOption(sc, "Show Task List by date", "Show Task List by project");
-                        switch (showOption) {
-                            case 1:
-                                p.printTasksByDate(taskManager);
-                                break;
+                    //displayTaskMenu();
+                    int showOption = getOption(sc, "Show Task List by date", "Show Task List by project");
+                    switch (showOption) {
+                        case 1:
+                            printTasks(taskManager.sortByDate(), "  Task List Sorted By Date   ");
+                            break;
 
-                            case 2:
-                                System.out.println();
-                                System.out.println("Enter Project: ");
-                                String project = sc.nextLine();
-                                p.printTasksBypProject(taskManager);
-                                break;
-                        }
-
-                        break;
+                        case 2:
+                            System.out.println();
+                            String project = getString(sc, "project");
+                            printTasks(taskManager.filterByProject(project), "Task List Filtered By Project");
+                            break;
                     }
 
-                    // Add new Task
-                    case 2: {
-                        p.addTaskToTaskList(sc,taskManager);
-                        System.out.println("The task has been added to the task list successfully.");
-                        break;
-                    }
-
-                    // Edit task
-                    case 3:
-                        int editOption = p.getOption(sc, "Update task", "Mark as done", "Remove task");
-                        switch (editOption) {
-
-                            // Update task
-                            case 1:
-                                p.printTasksByDate(taskManager);
-                                int id = p.getId(sc, taskManager);
-                                if (id != -1) {
-                                    ArrayList<String> updatedTask = p.taskString(sc);
-                                    taskManager.updateTask(id, updatedTask);
-                                    System.out.println("The task has been updated successfully.");
-                                } else {
-                                    System.out.println("No task was found with this id.");
-                                }
-                                break;
-
-                            // Mark as done
-                            case 2:
-                                p.printTasksByDate(taskManager);
-                                id = p.getId(sc, taskManager);
-                                if (id != -1) {
-                                    taskManager.markAsDone(id);
-                                    System.out.println("The task has been marked as done successfully.");
-                                } else {
-                                    System.out.println("No task was found with this id.");
-                                }
-                                break;
-
-                            // Remove task
-                            case 3:
-                                p.printTasksByDate(taskManager);
-                                id = p.getId(sc, taskManager);
-                                if (id != -1) {
-                                    taskManager.removeTaskById(id);
-                                    System.out.println("The task has been removed successfully.");
-                                } else {
-                                    System.out.println("No task was found with this id.");
-                                }
-                                break;
-                        }
-                        break;
-
-                    case 4:
-                        TaskWriter taskWriter = new TaskWriter();
-                        taskWriter.writeToFile(tasks);
-                        System.out.println("Saving... and Exit.");
-                        quit = true;
-                        break;
-
-                    default:
-                        System.out.println("Please enter a number between 1 to 4!");
-                        break;
+                    break;
                 }
+
+                // Add new Task
+                case 2: {
+                    addTaskToTaskList(sc, taskManager);
+                    System.out.println("The task has been added to the task list successfully.");
+                    break;
+                }
+
+                // Edit task
+                case 3:
+                    int editOption = getOption(sc, "Update task", "Mark as done", "Remove task");
+                    switch (editOption) {
+
+                        // Update task
+                        case 1:
+                            printTasks(tasks, "Task List Sorted By Date");
+                            int id = getId(sc, taskManager);
+                            if (id != -1) {
+                                ArrayList<String> updatedTask = taskString(sc);
+                                taskManager.updateTask(id, updatedTask);
+                                System.out.println("The task has been updated successfully.");
+                            } else {
+                                System.out.println("No task was found with this id.");
+                            }
+                            break;
+
+                        // Mark as done
+                        case 2:
+                            printTasks(tasks, "Task List Sorted By Date");
+                            id = getId(sc, taskManager);
+                            if (id != -1) {
+                                taskManager.markAsDone(id);
+                                System.out.println("The task has been marked as done successfully.");
+                            } else {
+                                System.out.println("No task was found with this id.");
+                            }
+                            break;
+
+                        // Remove task
+                        case 3:
+                            printTasks(tasks, "Task List Sorted By Date");
+                            id = getId(sc, taskManager);
+                            if (id != -1) {
+                                taskManager.removeTaskById(id);
+                                System.out.println("The task has been removed successfully.");
+                            } else {
+                                System.out.println("No task was found with this id.");
+                            }
+                            break;
+                    }
+                    break;
+
+                case 4:
+                    TaskWriter taskWriter = new TaskWriter();
+                    taskWriter.writeToFile(tasks);
+                    System.out.println("Saving... and Exit.");
+                    quit = true;
+                    break;
+
+                default:
+                    System.out.println("Please enter a number between 1 to 4!");
+                    break;
             }
+            
         }
     }
 }

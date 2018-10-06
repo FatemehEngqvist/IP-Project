@@ -87,14 +87,16 @@ public class TaskManager {
     }
 
     public ArrayList<Task> sortByDate() {
-
-        return (ArrayList<Task>) tasks.stream()
+        ArrayList<Task> copiedTasks = tasks;
+        return (ArrayList<Task>) copiedTasks.stream()
                 .sorted(Comparator.comparing(Task::getDueDate))
                 .collect(Collectors.toList());
     }
 
+
     public ArrayList<Task> filterByProject(String project) {
-        return (ArrayList<Task>) tasks.stream()
+        ArrayList<Task> copiedTasks = tasks;
+        return (ArrayList<Task>) copiedTasks.stream()
                 .filter(task -> task.getProject().contains(project))
                 .sorted(Comparator.comparing(Task::getDueDate))
                 .collect(Collectors.toList());

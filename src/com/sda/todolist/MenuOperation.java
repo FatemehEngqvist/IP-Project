@@ -44,32 +44,15 @@ public class MenuOperation {
         taskManager.addTask(title, dueDate, project, status);
     }
 
-
-    static void printTasksBypProject(TaskManager taskManager) {
+    static void printTasks(ArrayList<Task> tasks, String header) {
         System.out.println();
-        System.out.println("******************************* Task List Filtered By Project *****************************");
+        System.out.println("******************************* " + header + " *****************************");
         System.out.println();
-        if (taskManager.getTasks().isEmpty()) {
+        if (tasks.isEmpty()) {
             System.out.println("There are no tasks to show.");
         } else {
-            for (int i = 0; i < taskManager.getTasks().size(); i++) {
-                System.out.println(taskManager.getTasks().get(i));
-            }
-        }
-        System.out.println();
-        System.out.println("*******************************************************************************************");
-    }
-
-
-    static void printTasksByDate(TaskManager taskManager) {
-        System.out.println();
-        System.out.println("********************************* Task List Sorted By Date ********************************");
-        System.out.println();
-        if (taskManager.getTasks().isEmpty()) {
-            System.out.println("There are no tasks to show.");
-        } else {
-            for (int i = 0; i < taskManager.getTasks().size(); i++) {
-                System.out.println(taskManager.getTasks().get(i));
+            for (int i = 0; i < tasks.size(); i++) {
+                System.out.println(tasks.get(i));
             }
         }
         System.out.println();
