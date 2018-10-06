@@ -1,4 +1,4 @@
-package com.sda.todoly;
+package com.sda.todolist;
 
 import java.time.LocalDate;
 
@@ -42,10 +42,6 @@ public class Task implements Comparable<Task> {
         return isDone;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -68,10 +64,6 @@ public class Task implements Comparable<Task> {
         setDone(isDone);
     }
 
-    public void MarkAsDone() {
-        setDone(true);
-    }
-
     public int compareTo(Task t) {
         return dueDate.compareTo(t.getDueDate());
     }
@@ -82,7 +74,7 @@ public class Task implements Comparable<Task> {
         if(isDone) {
             status = "task is Done";
         }
-        return  " Task id: " + id + "  Title: " + title + "  Due date: " +
+        return  "Task id: " + id + "  Title: " + title + "  Due date: " +
                 dueDate + "  Project: " + project + "  Status: " + status ;
     }
 }

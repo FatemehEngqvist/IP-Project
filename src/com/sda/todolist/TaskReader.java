@@ -1,4 +1,6 @@
-package com.sda.todoly;
+package com.sda.todolist;
+
+import com.sda.todolist.Task;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -12,19 +14,18 @@ import java.util.ArrayList;
 
 public class TaskReader {
 
-	private int totalNumberOfTasks;
-	private int numberOfDoneTasks;
 
+	public ArrayList<Task> loadTasks() {
 
-	public ArrayList<Task> loadTasks() throws FileNotFoundException {
 		ArrayList<Task> tasksToShow = new ArrayList<>();
 
-		File file = new File("tasks.txt");
-		FileReader fileReader = new FileReader(file);
-		BufferedReader bufferedReader = new BufferedReader(fileReader);
-		String line;
-		Task currentTask;
 		try {
+
+			File file = new File("tasks.txt");
+			FileReader fileReader = new FileReader(file);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			String line;
+			Task currentTask;
 
 			while ((line = bufferedReader.readLine()) != null) {
 
@@ -35,8 +36,6 @@ public class TaskReader {
 				String project = line;
 				line = bufferedReader.readLine();
 				boolean isDone = Boolean.valueOf(line);
-
-
 
 				currentTask = new Task(title, dueDate, project, isDone);
 				tasksToShow.add(currentTask);
