@@ -1,11 +1,16 @@
 package com.sda.todolist;
 
+import com.sda.todolist.filehandler.FileTaskReader;
+import com.sda.todolist.filehandler.FileTaskWriter;
+import com.sda.todolist.model.TaskManager;
+
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import static com.sda.todolist.MenuOperation.*;
-
+import static com.sda.todolist.TaskPresenter.*;
 
 /**
  * This class is a part of "ToDoList" project.
@@ -15,11 +20,32 @@ import static com.sda.todolist.MenuOperation.*;
  */
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    /**
+     * @return Task This returns the task object made of reading user input.
+     */
+    static void addTaskToTaskList(Scanner sc, TaskManager taskManager) {
+        String title = getString(sc, "title");
+        String project = getString(sc, "project");
+        LocalDate dueDate = getDate(sc);
+        boolean status = getStatus(sc);
 
-        TaskReader taskReader = new TaskReader();
-        ArrayList<Task> tasks = taskReader.loadTasks();
-        TaskManager taskManager = new TaskManager(tasks);
+        taskManager.addTask(title, dueDate, project, status);
+    }
+
+    static int getId(Scanner sc, TaskManager taskManager) {
+        System.out.println("Enter the task id from the above task list: ");
+        String idString = sc.nextLine();
+        if (isInt(idString)) {
+            int id = Integer.parseInt(idString);
+            if(taskManager.idExist(id)) {
+                return id;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) throws IOException {
+        TaskManager taskManager = new TaskManager(new FileTaskReader(), new FileTaskWriter());
         Scanner sc = new Scanner(System.in);
 
 
@@ -64,7 +90,7 @@ public class Main {
 
                         // Update task
                         case 1:
-                            printTasks(tasks, "Task List Sorted By Date");
+                            printTasks(taskManager.sortByDate(), "Task List Sorted By Date");
                             int id = getId(sc, taskManager);
                             if (id != -1) {
                                 ArrayList<String> updatedTask = taskString(sc);
@@ -77,7 +103,7 @@ public class Main {
 
                         // Mark as done
                         case 2:
-                            printTasks(tasks, "Task List Sorted By Date");
+                            printTasks(taskManager.sortByDate(), "Task List Sorted By Date");
                             id = getId(sc, taskManager);
                             if (id != -1) {
                                 taskManager.markAsDone(id);
@@ -89,7 +115,7 @@ public class Main {
 
                         // Remove task
                         case 3:
-                            printTasks(tasks, "Task List Sorted By Date");
+                            printTasks(taskManager.sortByDate(), "Task List Sorted By Date");
                             id = getId(sc, taskManager);
                             if (id != -1) {
                                 taskManager.removeTaskById(id);
@@ -102,8 +128,7 @@ public class Main {
                     break;
 
                 case 4:
-                    TaskWriter taskWriter = new TaskWriter();
-                    taskWriter.writeToFile(tasks);
+                    taskManager.saveTasks();
                     System.out.println("Saving... and Exit.");
                     quit = true;
                     break;
@@ -112,7 +137,6 @@ public class Main {
                     System.out.println("Please enter a number between 1 to 4!");
                     break;
             }
-            
         }
     }
 }

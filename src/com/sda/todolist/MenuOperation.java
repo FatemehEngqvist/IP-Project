@@ -1,5 +1,4 @@
 package com.sda.todolist;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -22,42 +21,9 @@ public class MenuOperation {
         System.out.println("You have " + undoneTasks + " tasks todo and " + doneTasks + " tasks are done!");
     }
 
-    static void displayMainMenu() {
-        System.out.println();
-        System.out.println("Pick an option: ");
-        System.out.println(" 1) Show Task List (by date or project)");
-        System.out.println(" 2) Add New Task");
-        System.out.println(" 3) Edit Task (update, mark as done, remove");
-        System.out.println(" 4) Save and Quite");
-    }
 
 
-    /**
-     * @return Task This returns the task object made of reading user input.
-     */
-    static void addTaskToTaskList(Scanner sc, TaskManager taskManager) {
-        String title = getString(sc, "title");
-        String project = getString(sc, "project");
-        LocalDate dueDate = getDate(sc);
-        boolean status = getStatus(sc);
 
-        taskManager.addTask(title, dueDate, project, status);
-    }
-
-    static void printTasks(ArrayList<Task> tasks, String header) {
-        System.out.println();
-        System.out.println("******************************* " + header + " *****************************");
-        System.out.println();
-        if (tasks.isEmpty()) {
-            System.out.println("There are no tasks to show.");
-        } else {
-            for (int i = 0; i < tasks.size(); i++) {
-                System.out.println(tasks.get(i));
-            }
-        }
-        System.out.println();
-        System.out.println("*******************************************************************************************");
-    }
 
     // Parser
     public static String getString(Scanner sc, String string) {
@@ -137,19 +103,6 @@ public class MenuOperation {
             System.out.println("Enter a number between 1 and " + max + " or 0 to go back to the main menu");
         }
     }
-
-    static int getId(Scanner sc, TaskManager taskManager) {
-        System.out.println("Enter the task id from the above task list: ");
-        String idString = sc.nextLine();
-        if (isInt(idString)) {
-            int id = Integer.parseInt(idString);
-            if(taskManager.idExist(id)) {
-                    return id;
-                }
-        }
-        return -1;
-    }
-
 
 
 }

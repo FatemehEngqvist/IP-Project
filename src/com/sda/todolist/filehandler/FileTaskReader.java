@@ -1,6 +1,7 @@
-package com.sda.todolist;
+package com.sda.todolist.filehandler;
 
-import com.sda.todolist.Task;
+import com.sda.todolist.model.TaskReader;
+import com.sda.todolist.model.Task;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -9,12 +10,12 @@ import java.util.ArrayList;
 /**
  * This class is a part of "ToDoList" project.
  *
- * This TaskReader reads from the input file.
+ * This FileTaskReader reads from the input file.
  */
 
-public class TaskReader {
+public class FileTaskReader implements TaskReader {
 
-
+	@Override
 	public ArrayList<Task> loadTasks() {
 
 		ArrayList<Task> tasksToShow = new ArrayList<>();
