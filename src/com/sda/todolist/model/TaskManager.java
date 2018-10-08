@@ -70,8 +70,8 @@ public class TaskManager {
         for (int i = 0; i < tasks.size(); i++) {
             if (tasks.get(i).getId() == id) {
                 tasks.get(i).setTitle(newTask.get(0));
-                tasks.get(i).setDueDate(LocalDate.parse(newTask.get(1)));
                 tasks.get(i).setProject(newTask.get(2));
+                tasks.get(i).setDueDate(LocalDate.parse(newTask.get(1)));
                 tasks.get(i).setDone(Boolean.parseBoolean(newTask.get(3)));
             }
         }
