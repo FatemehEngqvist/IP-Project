@@ -53,7 +53,7 @@ public class Main {
 
         boolean quit = false;
         while (!quit) {
-            int input = getOption(sc, "Show Task List (by date or project)", "Add New Task", "Edit Task (update, mark as done, remove", "Save and Quit");
+            int input = getOption(sc, "Show Task List (by date or project)", "Add New Task", "Edit Task (update, mark as done, remove)", "Save and Quit");
             switch (input) {
 
                 // Show Task List ordered by date or filtered by project
