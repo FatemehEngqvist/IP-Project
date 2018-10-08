@@ -2,3 +2,10 @@ out/
 .idea/
 tasks.txt
 .DS_Store
+.classpath
+.metadata/
+.project
+IP-Project.eml
+IP-Project.userlibraries
+src/UML.uml
+src/UMLDiagram.ucls

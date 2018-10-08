@@ -1,4 +1,4 @@
-package com.sda.todolist;
+package com.sda.todolist.model;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -15,12 +15,18 @@ import java.util.Iterator;
 public class TaskManager {
 
     private ArrayList<Task> tasks;
+    private TaskWriter taskWriter;
 
     /**
      * Constructor
      */
-    public TaskManager(ArrayList<Task> tasks) {
-        this.tasks = tasks;
+    public TaskManager(TaskReader taskReader, TaskWriter taskWriter) {
+        this.tasks = taskReader.loadTasks();
+        this.taskWriter = taskWriter;
+    }
+
+    public void saveTasks() {
+        taskWriter.saveTasks(tasks);
     }
 
     /**
@@ -64,8 +70,8 @@ public class TaskManager {
         for (int i = 0; i < tasks.size(); i++) {
             if (tasks.get(i).getId() == id) {
                 tasks.get(i).setTitle(newTask.get(0));
-                tasks.get(i).setDueDate(LocalDate.parse(newTask.get(1)));
                 tasks.get(i).setProject(newTask.get(2));
+                tasks.get(i).setDueDate(LocalDate.parse(newTask.get(1)));
                 tasks.get(i).setDone(Boolean.parseBoolean(newTask.get(3)));
             }
         }

@@ -1,6 +1,7 @@
-package com.sda.todolist;
+package com.sda.todolist.filehandler;
 
-import com.sda.todolist.Task;
+import com.sda.todolist.model.TaskWriter;
+import com.sda.todolist.model.Task;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
  * This main reads user input and choose different operations based on user preference.
  */
 
-public class TaskWriter {
+public class FileTaskWriter implements TaskWriter {
 
-    public void writeToFile(ArrayList<Task> tasks ) { // TODO - skapa ta en lista av Task
+    @Override
+    public void saveTasks(ArrayList<Task> tasks ) { // TODO - skapa ta en lista av Task
 
         //if the file exists
         FileWriter fileWriter = null;

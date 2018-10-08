@@ -1,4 +1,4 @@
-package com.sda.todolist;
+package com.sda.todolist.model;
 
 import java.time.LocalDate;
 
