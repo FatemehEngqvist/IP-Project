@@ -17,12 +17,9 @@ public class MenuOperation {
 
     static void displayWelcome(int undoneTasks, int doneTasks) {
         System.out.println();
-        System.out.println("Welcome to ToDoList.");
+        System.out.println("Welcome to ToDoList");
         System.out.println("You have " + undoneTasks + " tasks todo and " + doneTasks + " tasks are done!");
     }
-
-
-
 
 
     // Parser
@@ -71,8 +68,8 @@ public class MenuOperation {
         ArrayList<String> updatedTask = new ArrayList<>();
 
         String title = getString(sc, "title");
-        LocalDate dueDate = getDate(sc);
         String project = getString(sc, "project");
+        LocalDate dueDate = getDate(sc);
         boolean status = getStatus(sc);
 
         updatedTask.add(title);
@@ -88,7 +85,7 @@ public class MenuOperation {
     static int getOption(Scanner sc, String... options) {
         int max = options.length;
         System.out.println();
-        System.out.println("Pick an option or enter 0 to go back to the main menu:");
+        System.out.println("Pick an option (Or 0 to go back to the main menu): ");
         for (int i = 0; i < options.length; ++i) {
             System.out.println("  " + (i + 1) + ") " + options[i]);
         }
