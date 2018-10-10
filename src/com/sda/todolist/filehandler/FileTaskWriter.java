@@ -2,22 +2,23 @@ package com.sda.todolist.filehandler;
 
 import com.sda.todolist.model.TaskWriter;
 import com.sda.todolist.model.Task;
-
 import java.io.*;
 import java.util.ArrayList;
 
 /**
  * This class is a part of "ToDoList" project.
+ * The FileTaskWriter class saves the task list to tasks.txt file.
  *
- * This main reads user input and choose different operations based on user preference.
+ * @author Fatemeh Engqvist
  */
-
 public class FileTaskWriter implements TaskWriter {
 
-    @Override
-    public void saveTasks(ArrayList<Task> tasks ) { // TODO - skapa ta en lista av Task
+    /**
+     * Save the task list to tasks.txt file.
+     * @param tasks task list
+     */
+    public void saveTasks(ArrayList<Task> tasks ) {
 
-        //if the file exists
         FileWriter fileWriter = null;
 
         try {
@@ -25,7 +26,8 @@ public class FileTaskWriter implements TaskWriter {
              fileWriter = new FileWriter("tasks.txt");
 
              for(Task task: tasks) {
-                fileWriter.write(task.getTitle() + "\n");
+                 fileWriter.write(task.getId() + "\n");
+                 fileWriter.write(task.getTitle() + "\n");
                 fileWriter.write(task.getDueDate().toString() + "\n");
                 fileWriter.write(task.getProject() + "\n");
                 fileWriter.write(String.valueOf(task.isDone()) + "\n");
