@@ -1,10 +1,25 @@
 package com.sda.todolist;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MenuOperation {
+/**
+ * This class is a part of "ToDoList" project.
+ * This Parser class reads the input from the user in the command line and parse it.
+ *
+ * @author Fatemeh Engqvist
+ */
 
+class Parser {
+
+    /**
+     * Checks if a String can be parsed to int
+     * Else returns false.
+     *
+     * @param input a string
+     * @return true if the String can be parsed to int
+     */
     static boolean isInt(String input) {
         try {
             Integer.parseInt(input);
@@ -14,7 +29,12 @@ public class MenuOperation {
         }
     }
 
-
+    /**
+     * Displayes the welcome menu and the number of undone and done tasks.
+     *
+     * @param undoneTasks the number of tasks that are not done
+     * @param doneTasks   the number of tasks that are done
+     */
     static void displayWelcome(int undoneTasks, int doneTasks) {
         System.out.println();
         System.out.println("Welcome to ToDoList");
@@ -22,10 +42,15 @@ public class MenuOperation {
     }
 
 
-    // Parser
-    public static String getString(Scanner sc, String string) {
+    /**
+     * Asks user to enter a title.
+     * Returns the string format of the task title
+     * @param sc the scanner that scans the data
+     * @return title
+     */
+    static String getTitle(Scanner sc) {
         while (true) {
-            System.out.print("Enter the " + string + ": ");
+            System.out.print("Enter the title: ");
             String s = sc.nextLine().trim();
             if (!s.isEmpty()) {
                 return s;
@@ -33,8 +58,30 @@ public class MenuOperation {
         }
     }
 
-    // Parser
-    public static LocalDate getDate(Scanner sc) {
+    /**
+     * Asks the user to enter the project.
+     * Returns the project name in String format.
+     * @param sc the scanner that scans the data
+     * @return project
+     */
+    static String getProject(Scanner sc) {
+        while (true) {
+            System.out.print("Enter the project: ");
+            String s = sc.nextLine().trim();
+            if (!s.isEmpty()) {
+                return s;
+            }
+        }
+    }
+
+    /**
+     * Asks user to enter due date in yyyy-mm-dd format.
+     * If the format is wrong asks again.
+     * Returns the due date.
+     * @param sc the scanner that scans the data
+     * @return due date
+     */
+    static LocalDate getDate(Scanner sc) {
         System.out.print("Enter the due date in yyyy-mm-dd format: ");
         LocalDate dueDate;
         while (true) {
@@ -48,8 +95,13 @@ public class MenuOperation {
         return dueDate;
     }
 
-    //Parser
-    public static boolean getStatus(Scanner sc) {
+    /**
+     * Asks the user to enter the status of the task.
+     * Returns true if the entered status by user is done and false if the input from the user is undone
+     * @param sc the scanner that scans the data
+     * @return true if done and false if undone
+     */
+    static boolean getStatus(Scanner sc) {
         String statusString;
         while (true) {
             System.out.print("Enter the task status \"done\" or \"undone\": ");
@@ -62,13 +114,18 @@ public class MenuOperation {
         }
     }
 
-
+    /**
+     * Asks the user to enter the title, project, due date and status.
+     * Returns the task in a list of string.
+     * @param sc the scanner that scans the data
+     * @return task
+     */
     static ArrayList<String> taskString(Scanner sc) {
 
         ArrayList<String> updatedTask = new ArrayList<>();
 
-        String title = getString(sc, "title");
-        String project = getString(sc, "project");
+        String title = getTitle(sc);
+        String project = getProject(sc);
         LocalDate dueDate = getDate(sc);
         boolean status = getStatus(sc);
 
@@ -81,7 +138,16 @@ public class MenuOperation {
     }
 
 
-    // Parser returns what user want to do
+    /**
+     * Prints the user the options that are available to choose.
+     * Asks user to enter an option number or 0 to go back to main menu.
+     * If the entered number is not valid asks the user again.
+     * Returns the number.
+     *
+     * @param sc the scanner that scans the data
+     * @param options menu or submenu options
+     * @return option number
+     */
     static int getOption(Scanner sc, String... options) {
         int max = options.length;
         System.out.println();
