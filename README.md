@@ -75,9 +75,6 @@ Enter 4 to exit the program and save the your task list. No changes will be save
 
 [Class Diagram](https://github.com/FatemehEngqvist/IP-Project/blob/master/Diagrams/Untitled%20Diagram.jpg?raw=true)
 
-## Use-case Diagram
-
-## Activity Diagram
 
 ## Sequence Diagram
 
