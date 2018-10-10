@@ -13,11 +13,16 @@ The user should be able to also edit, mark as done or remove tasks while they ar
 The user also should be able to quit and save the current task list to file, and then
 restart the application with the former state restored.
 
-## How to run
+## How to compile
 
+Clone the repository. 
+
+Run this on terminal
+
+$ javac Main.java
 Install Java virtual machine version JRE 10. [link to JRE 10](https://www.oracle.com/technetwork/java/javase/downloads/jre10-downloads-4417026.html)
 
-To run the program Todolist you can run by terminal by writing java -jar Todolist.jar
+To run the program Todolist you can download the [Todolist.jar](https://github.com/FatemehEngqvist/IP-Project/blob/master/out/artifacts/Todolist.jar) file run by terminal by writing java -jar Todolist.jar
 
 ## User Manual
 Open the program by running the main. The welcome message will be printed showing the number of tasks (done and undone) that are saved to file. The following main menu is shown after the welcome message.
