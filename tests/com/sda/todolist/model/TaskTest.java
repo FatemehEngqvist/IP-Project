@@ -7,6 +7,12 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This test class is a part of "ToDoList" project.
+ * This TaskTest class tests methods in Task class.
+ *
+ * @author Fatemeh Engqvist
+ */
 class TaskTest {
 
     /**

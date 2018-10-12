@@ -7,6 +7,13 @@ import org.junit.jupiter.api.Test;
 import static com.sda.todolist.Parser.isInt;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This test class is a part of "ToDoList" project.
+ * This ParserTest class tests  methods in Parser class.
+ *
+ * @author Fatemeh Engqvist
+ */
+
 class ParserTest {
 
     /**

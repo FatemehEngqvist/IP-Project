@@ -5,11 +5,16 @@ import com.sda.todolist.filehandler.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-
 import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * This test class is a part of "ToDoList" project.
+ * This TaskManagerTest class tests all methods in TaskManager class.
+ *
+ * @author Fatemeh Engqvist
+ */
 
 class TaskManagerTest {
 
@@ -150,7 +155,7 @@ class TaskManagerTest {
      * @param project task project
      * @param status  task
      * @param id
-     * @return
+     * @return task in string format
      */
     private String getTaskString(String title, LocalDate dueDate, String project, boolean status, int id) {
         String statusString = "task is Not Done";
