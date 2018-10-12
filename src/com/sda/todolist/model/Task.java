@@ -13,19 +13,19 @@ public class Task implements Comparable<Task> {
     private String title;
     private LocalDate dueDate;
     private String project;
-    private boolean isDone;
+    private boolean status;
     private int id;
 
 
     /**
      * Constructor of the task takes title, due date, project, status and id number.
      */
-    public Task(String title, LocalDate dueDate, String project, boolean isDone, int id) {
+    public Task(String title, String project, LocalDate dueDate, boolean status, int id) {
         this.id = id;
         this.title = title;
         this.dueDate = dueDate;
         this.project = project;
-        this.isDone = isDone;
+        this.status = status;
     }
 
 
@@ -45,8 +45,8 @@ public class Task implements Comparable<Task> {
         return project;
     }
 
-    public boolean isDone() {
-        return isDone;
+    public boolean getStatus() {
+        return status;
     }
 
      void setTitle(String title) {
@@ -62,7 +62,7 @@ public class Task implements Comparable<Task> {
     }
 
      void setDone(boolean done) {
-        isDone = done;
+        status = done;
     }
 
     /**
@@ -82,11 +82,11 @@ public class Task implements Comparable<Task> {
      */
     @Override
     public String toString() {
-        String status = "task is Not Done";
-        if (isDone) {
-            status = "task is Done";
+        String statusString = "task is Not Done";
+        if (status) {
+            statusString = "task is Done";
         }
         return "Task id: " + id + "  Title: " + title + "  Due date: " +
-                dueDate + "  Project: " + project + "  Status: " + status;
+                dueDate + "  Project: " + project + "  Status: " + statusString;
     }
 }

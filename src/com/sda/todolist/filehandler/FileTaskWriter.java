@@ -30,7 +30,7 @@ public class FileTaskWriter implements TaskWriter {
                  fileWriter.write(task.getTitle() + "\n");
                 fileWriter.write(task.getDueDate().toString() + "\n");
                 fileWriter.write(task.getProject() + "\n");
-                fileWriter.write(String.valueOf(task.isDone()) + "\n");
+                fileWriter.write(String.valueOf(task.getStatus()) + "\n");
              }
 
             fileWriter.flush();

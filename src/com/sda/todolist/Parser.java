@@ -130,8 +130,8 @@ class Parser {
         boolean status = getStatus(sc);
 
         updatedTask.add(title);
-        updatedTask.add(dueDate.toString());
         updatedTask.add(project);
+        updatedTask.add(dueDate.toString());
         updatedTask.add(String.valueOf(status));
 
         return updatedTask;

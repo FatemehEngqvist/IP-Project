@@ -128,7 +128,7 @@ public class Main {
         String project = getProject(sc);
         LocalDate dueDate = getDate(sc);
         boolean status = getStatus(sc);
-        taskManager.addTask(title, dueDate, project, status);
+        taskManager.addTask(title, project, dueDate, status);
     }
 
 
@@ -150,6 +150,7 @@ public class Main {
                 int id = getId(sc, taskManager);
                 if (id != -1) {
                     ArrayList<String> updatedTask = taskString(sc);
+                    System.out.println();
                     taskManager.updateTask(id, updatedTask);
                     System.out.println("The task has been updated successfully.");
                 } else {

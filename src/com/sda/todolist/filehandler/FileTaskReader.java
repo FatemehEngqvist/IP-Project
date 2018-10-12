@@ -45,7 +45,7 @@ public class FileTaskReader implements TaskReader {
                 boolean isDone = Boolean.valueOf(line);
 
 
-                currentTask = new Task(title, dueDate, project, isDone, id);
+                currentTask = new Task(title, project, dueDate, isDone, id);
                 tasksToShow.add(currentTask);
             }
             fileReader.close();

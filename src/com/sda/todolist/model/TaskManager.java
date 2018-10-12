@@ -34,21 +34,26 @@ public class TaskManager {
         taskWriter.saveTasks(tasks);
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
     /**
      * Adds a new task to tasks list.
      *
-     * @param title   task's title
-     * @param dueDate task's due date
-     * @param project task's project category
-     * @param isDone  task's status
+     * @param title     task's title
+     * @param dueDate   task's due date
+     * @param project   task's project category
+     * @param getStatus task's status
      */
-    public void addTask(String title, LocalDate dueDate, String project, boolean isDone) {
+    public void addTask(String title, String project, LocalDate dueDate, boolean getStatus) {
         id += 1;
-        tasks.add(new Task(title, dueDate, project, isDone, id));
+        tasks.add(new Task(title, project, dueDate, getStatus, id));
     }
 
     /**
      * Checks if a task with this id exists in the task list.
+     *
      * @param id task id
      * @return true if there is a task with the id, false otherwise
      */
@@ -63,36 +68,48 @@ public class TaskManager {
 
     /**
      * Removes a task from tasks list by task id.
+     *
      * @param id task id
      */
-    public void removeTaskById(int id) {
+    public boolean removeTaskById(int id) {
         Iterator<Task> it = tasks.iterator();
         while (it.hasNext()) {
             Task task = it.next();
             if (task.getId() == id) {
                 tasks.remove(task);
+                return true;
             }
         }
+        return false;
     }
 
     /**
      * Updates all fields of a task from the task list by the given task id and new update details.
-     * @param id task id
+     *
+     * @param id      task id
      * @param newTask array list of the updated version of task {title, dueDate, project, status}
      */
-    public void updateTask(int id, ArrayList<String> newTask) {
+    public boolean updateTask(int id, ArrayList<String> newTask) {
         for (Task t : tasks) {
-            if (t.getId() == id) {
-                t.setTitle(newTask.get(0));
-                t.setProject(newTask.get(2));
-                t.setDueDate(LocalDate.parse(newTask.get(1)));
-                t.setDone(Boolean.parseBoolean(newTask.get(3)));
+            try {
+                if (t.getId() == id) {
+                    t.setTitle(newTask.get(0));
+                    t.setProject(newTask.get(1));
+                    t.setDueDate(LocalDate.parse(newTask.get(2)));
+                    t.setDone(Boolean.parseBoolean(newTask.get(3)));
+                    return true;
+                }
+            } catch (Exception e) {
+                return false;
             }
         }
+        return false;
+
     }
 
     /**
      * Marks a task from the task list done by task id
+     *
      * @param id task id
      */
     public void markAsDone(int id) {
@@ -106,6 +123,7 @@ public class TaskManager {
 
     /**
      * Sort the task list by due date
+     *
      * @return the sorted task list by due date
      */
     public List<Task> sortByDate() {
@@ -116,6 +134,7 @@ public class TaskManager {
 
     /**
      * Filters the task list by project name
+     *
      * @param project task project category
      * @return filtered task list by project name
      */
@@ -128,9 +147,10 @@ public class TaskManager {
 
     /**
      * Returns the maximum task id in the task list
+     *
      * @return maximum id
      */
-     private int getMaxId() {
+    public int getMaxId() {
         return tasks.stream()
                 .mapToInt(Task::getId)
                 .max()
@@ -139,12 +159,13 @@ public class TaskManager {
 
     /**
      * Returns the number of tasks that are marked done in the task list
+     *
      * @return number of done tasks
      */
     public int noOfDoneTasks() {
         int sum = 0;
         for (Task t : tasks) {
-            if (t.isDone()) {
+            if (t.getStatus()) {
                 sum++;
             }
         }
@@ -153,12 +174,13 @@ public class TaskManager {
 
     /**
      * Returns the number of tasks that are marked not done in the task list
+     *
      * @return number of undone tasks
      */
     public int noOfNotDoneTasks() {
         int sum = 0;
         for (Task t : tasks) {
-            if (!t.isDone()) {
+            if (!t.getStatus()) {
                 sum++;
             }
         }
@@ -167,10 +189,11 @@ public class TaskManager {
 
     /**
      * Returns a string of a task from the task list specified by id.
+     *
      * @param id task id
      * @return the task specified by id in the string format
      */
-    String getTaskString(int id) {
+    public String getTaskString(int id) {
         for (Task t : tasks) {
             if (t.getId() == id) {
                 return t.toString();
@@ -181,7 +204,8 @@ public class TaskManager {
 
     /**
      * Prints the task list by the header on top
-     * @param tasks task list
+     *
+     * @param tasks  task list
      * @param header the title of the task list (e.g sorted or filtered)
      */
     public static void printTasks(List<Task> tasks, String header) {
@@ -197,5 +221,6 @@ public class TaskManager {
         }
         System.out.println();
     }
+
 
 }
