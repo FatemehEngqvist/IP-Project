@@ -82,15 +82,23 @@ Enter 4 to exit the program and save the your task list. No changes will be save
 
 ## Sequence Diagram
 
+System Sequence Diagram for ShowTaskList() method:
+
 ![ShowTaskList() System Sequence Diagram](https://github.com/FatemehEngqvist/IP-Project/blob/master/Diagrams/ShowTaskList%20System%20Sequence%20Diagram.png?raw=true)
+
+System Sequence Diagram for CreatNewTask method:
 
 ![CreatNewTask() System Sequence Diagram](https://github.com/FatemehEngqvist/IP-Project/blob/master/Diagrams/CreatNewTask%20System%20Sequence%20Diagram.png?raw=true)
 
+System Sequence Diagram for udateTask() method:
+
 ![UpdateTask() System Sequence Diagram](https://github.com/FatemehEngqvist/IP-Project/blob/master/Diagrams/UpdateTask%20System%20Sequence%20Diagram.png?raw=true)
+
+System Sequence Diagram for MarkAsDone() method:
 
 ![MarkAsDone() System Sequence Diagram](https://github.com/FatemehEngqvist/IP-Project/blob/master/Diagrams/MarkAsDone%20System%20Sequence%20Diagram.png?raw=true)
 
-![CreatNewTask() System Sequence Diagram](https://github.com/FatemehEngqvist/IP-Project/blob/master/Diagrams/MarkAsDone%20System%20Sequence%20Diagram.png?raw=true)
+System Sequence Diagram for RemoveTaskById() method:
 
 ![RemoveTaskById() System Sequence Diagram](https://github.com/FatemehEngqvist/IP-Project/blob/master/Diagrams/RemoveTaskById%20System%20Sequence%20Diagram.png?raw=true)
 
